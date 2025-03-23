@@ -1,5 +1,9 @@
-SELECT
-    hotel_name,
-    score_group,
-    COUNT(hotel_id) OVER(PARTITION BY score_group) AS all_group
-FROM hotel_reviews;
+SELECT DISTINCT 
+    hotel_name, 
+    average_score,
+    EXTRACT(YEAR FROM review_date) AS years,
+   RANK() OVER(PARTITION BY EXTRACT(YEAR FROM review_date) ORDER BY average_score DESC) AS rankings
+FROM 
+    hotel_reviews
+WHERE 
+    score_group = 'Positive';
