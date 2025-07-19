@@ -17,5 +17,7 @@ CREATE TABLE public.Hotel_Reviews
 );
 
 
+
+
 --set owneship of table
 ALTER TABLE public.Hotel_Reviews OWNER to postgres;

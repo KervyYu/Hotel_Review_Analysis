@@ -1,5 +1,7 @@
 SELECT
- DISTINCT hotel_name
+    DISTINCT hotel_name,
+    average_score 
 FROM
     hotel_reviews
-Limit 10
+ORDER BY hotel_name ASC
+
