@@ -2,6 +2,8 @@
 
  General Quesions (questions most common people want to know)
 - Top 10 hotels for Leisure, or Business Trips
+    - Find the most famous hotel for Leisure and Business Trips
+    - Among those famous hotel, which has the highest rating
 - Top 10 hotels with the most negative and positive ratings overall
 - Nationalities with the most common reviewers
 
