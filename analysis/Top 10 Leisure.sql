@@ -5,6 +5,8 @@ Goal: To find the most famous hotel for business trips, and among those hotel, w
 Required query: CTE or Subquery */
 
 
+
+
 WITH leisure_trip AS (
     SELECT
         hotel_name,
@@ -15,18 +17,41 @@ WITH leisure_trip AS (
     WHERE
         trip = 'Leisure'
     GROUP BY hotel_name, average_score
-)
+),
 
-SELECT
-    *
-FROM (
+avg_leisure AS(
+    SELECT
+        hotel_name,
+        ROUND(AVG(reviewer_score)::numeric, 1) AS leisure_score
+    FROM hotel_reviews
+    WHERE trip = 'Leisure'
+    GROUP BY hotel_name
+),
+
+top_hotel AS (
     SELECT
         *
     FROM
         leisure_trip
     ORDER BY trip_count DESC
     LIMIT 10
-    ) AS top_hotels
+)
 
-ORDER BY top_hotels.average_score DESC
+
+
+
+
+
+SELECT
+    th.hotel_name,
+    th.trip_count,
+    th.average_score AS overall_score,
+    al.leisure_score AS leisure_averagescore
+FROM 
+    top_hotel AS th
+INNER JOIN avg_leisure AS al ON th.hotel_name = al.hotel_name
+ORDER BY th.trip_count DESC
+
+
+
 
