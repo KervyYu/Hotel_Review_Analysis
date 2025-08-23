@@ -50,7 +50,7 @@ SELECT
 FROM 
     top_hotel AS th
 INNER JOIN avg_business AS bl ON th.hotel_name = bl.hotel_name
-ORDER BY th.trip_count DESC
+ORDER BY business_averagescore DESC
 
 
 

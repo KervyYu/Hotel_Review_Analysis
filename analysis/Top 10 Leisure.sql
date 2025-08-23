@@ -50,7 +50,8 @@ SELECT
 FROM 
     top_hotel AS th
 INNER JOIN avg_leisure AS al ON th.hotel_name = al.hotel_name
-ORDER BY th.trip_count DESC
+ORDER BY leisure_averagescore DESC
+
 
 
 
